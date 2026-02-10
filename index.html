@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tharini Dulanjalee Malavige | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --bg: #f8fafc;
+            --card: #ffffff;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --border: #e2e8f0;
+            --accent: #3b82f6;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 0.8rem 0;
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover { color: var(--primary); }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 2px;
+            background: var(--text);
+            transition: 0.3s;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 5rem;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-text h1 span { color: var(--primary); }
+
+        .hero-text .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .hero-text .location {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-text .location i { margin-right: 0.3rem; }
+
+        .hero-text p {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.75rem 1.8rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); }
+
+        .btn-outline {
+            border: 2px solid var(--border);
+            color: var(--text);
+            background: transparent;
+        }
+
+        .btn-outline:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-2px); }
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-image img {
+            width: 320px;
+            height: 320px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 6px solid white;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* Sections */
+        section { padding: 5rem 0; }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-subtitle {
+            color: var(--text-light);
+            margin-bottom: 3rem;
+            font-size: 1rem;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
+        }
+
+        .skill-tag {
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .skill-tag i {
+            display: block;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-tag:hover {
+            border-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(37,99,235,0.1);
+        }
+
+        /* Experience */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2.5rem;
+            padding-left: 1.5rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.35rem;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 3px solid var(--bg);
+        }
+
+        .timeline-item .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .timeline-item .card:hover {
+            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+            transform: translateX(5px);
+        }
+
+        .timeline-date {
+            font-size: 0.8rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+        }
+
+        .timeline-company {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .timeline-item ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .timeline-item li {
+            position: relative;
+            padding-left: 1.2rem;
+            margin-bottom: 0.4rem;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .timeline-item li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.55rem;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+
+        /* Education */
+        .edu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .edu-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .edu-card:hover {
+            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+            transform: translateY(-3px);
+        }
+
+        .edu-card .date {
+            font-size: 0.8rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .edu-card h3 {
+            font-size: 1.05rem;
+            margin: 0.3rem 0;
+        }
+
+        .edu-card .institution {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .edu-card .location-text {
+            color: var(--text-light);
+            font-size: 0.85rem;
+            margin-top: 0.3rem;
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .project-card:hover {
+            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+            transform: translateY(-3px);
+        }
+
+        .project-card .date {
+            font-size: 0.8rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .project-card h3 {
+            font-size: 1.05rem;
+            margin: 0.3rem 0 0.5rem;
+        }
+
+        .project-card p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .tech-tag {
+            background: #eff6ff;
+            color: var(--primary);
+            padding: 0.25rem 0.7rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        /* Contact */
+        .contact-section {
+            background: var(--card);
+            border-top: 1px solid var(--border);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border-radius: 10px;
+            transition: background 0.3s;
+        }
+
+        .contact-item:hover { background: var(--bg); }
+
+        .contact-item i {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: #eff6ff;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .contact-item a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.9rem;
+            word-break: break-all;
+        }
+
+        .contact-item a:hover { color: var(--primary); }
+
+        .contact-item .label {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: var(--text-light);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border);
+        }
+
+        /* Languages */
+        .lang-grid {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .lang-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            text-align: center;
+        }
+
+        .lang-card h3 { margin-bottom: 0.3rem; }
+
+        .lang-card .level {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .lang-card .sublevel {
+            color: var(--text-light);
+            font-size: 0.8rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .hero-image { order: -1; }
+
+            .hero-image img { width: 220px; height: 220px; }
+
+            .hero-text h1 { font-size: 2rem; }
+
+            .hero-buttons { justify-content: center; }
+
+            .social-links { justify-content: center; }
+
+            nav ul { display: none; }
+            nav ul.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                padding: 1rem;
+                border-bottom: 1px solid var(--border);
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .hamburger { display: flex; }
+
+            .section-title { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+    <div class="container">
+        <a href="#" class="logo">TDM</a>
+        <div class="hamburger" onclick="document.querySelector('nav ul').classList.toggle('active')">
+            <span></span><span></span><span></span>
+        </div>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="about">
+    <div class="container">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Hi, I'm <span>Tharini</span></h1>
+                <p class="subtitle">Technical Support & Customer Service Specialist</p>
+                <p class="location"><i class="fas fa-map-marker-alt"></i> Riga, Latvia</p>
+                <p>Highly motivated IT professional with 8+ years of experience in technical support, customer service, and web development. Currently pursuing a Master's in Computer Information Systems at TSI, Latvia.</p>
+                <div class="hero-buttons">
+                    <a href="Tharini_CV.pdf" class="btn btn-primary" download><i class="fas fa-download"></i> Download CV</a>
+                    <a href="#contact" class="btn btn-outline"><i class="fas fa-envelope"></i> Contact Me</a>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/tharini-dulanjalee-06a7181a3/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/Dula-GitHub" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="mailto:dulanjaleemalavige@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="profile.jpg" alt="Tharini Dulanjalee Malavige">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Skills -->
+<section id="skills">
+    <div class="container">
+        <h2 class="section-title">Skills & Technologies</h2>
+        <p class="section-subtitle">Technologies and tools I have experience with</p>
+        <div class="skills-grid">
+            <div class="skill-tag"><i class="fab fa-php"></i>PHP / MySQL</div>
+            <div class="skill-tag"><i class="fab fa-laravel"></i>Laravel</div>
+            <div class="skill-tag"><i class="fab fa-html5"></i>HTML5</div>
+            <div class="skill-tag"><i class="fab fa-css3-alt"></i>CSS3</div>
+            <div class="skill-tag"><i class="fab fa-js"></i>JavaScript</div>
+            <div class="skill-tag"><i class="fab fa-bootstrap"></i>Bootstrap</div>
+            <div class="skill-tag"><i class="fab fa-vuejs"></i>Vue.js</div>
+            <div class="skill-tag"><i class="fab fa-node-js"></i>Node.js</div>
+            <div class="skill-tag"><i class="fab fa-java"></i>Java</div>
+            <div class="skill-tag"><i class="fas fa-database"></i>SQL</div>
+            <div class="skill-tag"><i class="fas fa-network-wired"></i>CCNA / Networking</div>
+            <div class="skill-tag"><i class="fas fa-server"></i>ERP Systems</div>
+        </div>
+    </div>
+</section>
+
+<!-- Experience -->
+<section id="experience">
+    <div class="container">
+        <h2 class="section-title">Work Experience</h2>
+        <p class="section-subtitle">My professional journey</p>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="card">
+                    <div class="timeline-date">March 2021 &ndash; March 2024</div>
+                    <h3 class="timeline-title">Technical Support & Customer Service Specialist</h3>
+                    <p class="timeline-company"><i class="fas fa-building"></i> Sri Lanka Telecom &ndash; Ragama OPMC, Sri Lanka</p>
+                    <ul>
+                        <li>Independently handled and resolved internal support requests, collaborating with IT and business teams to meet SLAs and internal KPIs</li>
+                        <li>Delivered prompt, accurate solutions for 80+ employees, maintaining a customer-first mindset</li>
+                        <li>Applied SQL knowledge to diagnose and correct data discrepancies in employee records and ERP databases</li>
+                        <li>Partnered with IT teams to integrate ERP processes and create automation tasks using Java, PHP (Laravel), HTML, CSS, and JavaScript</li>
+                        <li>Managed workload and priorities without direct supervision</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="card">
+                    <div class="timeline-date">April 2016 &ndash; February 2021</div>
+                    <h3 class="timeline-title">Customer Feedback Representative</h3>
+                    <p class="timeline-company"><i class="fas fa-building"></i> SLT Human Capital Solutions &ndash; Colombo, Sri Lanka</p>
+                    <ul>
+                        <li>Managed high-volume call queues, providing first-line technical assistance and real-time resolution</li>
+                        <li>Delivered clear, confident explanations to diverse customer base, adapting to both technical and non-technical audiences</li>
+                        <li>Applied programming knowledge from university projects to strengthen troubleshooting skills and explore automation ideas</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Education -->
+<section id="education">
+    <div class="container">
+        <h2 class="section-title">Education</h2>
+        <p class="section-subtitle">Academic qualifications and certifications</p>
+        <div class="edu-grid">
+            <div class="edu-card">
+                <span class="date">2024 &ndash; Present</span>
+                <h3>MSc in Computer Information Systems</h3>
+                <p class="institution">Transport and Telecommunication Institute</p>
+                <p class="location-text"><i class="fas fa-map-marker-alt"></i> Riga, Latvia</p>
+            </div>
+            <div class="edu-card">
+                <span class="date">2022 &ndash; 2024</span>
+                <h3>CCNA &ndash; Cisco Certified Network Associate</h3>
+                <p class="institution">University of Moratuwa &ndash; Cisco Networking Center</p>
+                <p class="location-text"><i class="fas fa-map-marker-alt"></i> Moratuwa, Sri Lanka</p>
+            </div>
+            <div class="edu-card">
+                <span class="date">2023</span>
+                <h3>IELTS Academic Test</h3>
+                <p class="institution">IDP Education Sri Lanka</p>
+                <p class="location-text"><i class="fas fa-map-marker-alt"></i> Negombo, Sri Lanka</p>
+            </div>
+            <div class="edu-card">
+                <span class="date">2017 &ndash; 2021</span>
+                <h3>Bachelor of IT (BIT) External Degree</h3>
+                <p class="institution">University of Moratuwa</p>
+                <p class="location-text"><i class="fas fa-map-marker-alt"></i> Moratuwa, Sri Lanka</p>
+            </div>
+            <div class="edu-card">
+                <span class="date">2021</span>
+                <h3>Advanced Certificate in Professional Sales</h3>
+                <p class="institution">Sri Lanka Telecom</p>
+                <p class="location-text"><i class="fas fa-map-marker-alt"></i> Colombo, Sri Lanka</p>
+            </div>
+            <div class="edu-card">
+                <span class="date">2012 &ndash; 2015</span>
+                <h3>GCE Advanced Level</h3>
+                <p class="institution">De Mazenod College, Kandana</p>
+                <p class="location-text"><i class="fas fa-map-marker-alt"></i> Kandana, Sri Lanka</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Languages -->
+<section>
+    <div class="container">
+        <h2 class="section-title">Languages</h2>
+        <p class="section-subtitle">Communication proficiency</p>
+        <div class="lang-grid">
+            <div class="lang-card">
+                <h3>Sinhala</h3>
+                <p class="level">Native</p>
+                <p class="sublevel">Mother tongue</p>
+            </div>
+            <div class="lang-card">
+                <h3>English</h3>
+                <p class="level">C2 &ndash; Proficient</p>
+                <p class="sublevel">All skills at C2 level</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Projects -->
+<section id="projects">
+    <div class="container">
+        <h2 class="section-title">Projects</h2>
+        <p class="section-subtitle">Academic and personal projects</p>
+        <div class="projects-grid">
+            <div class="project-card">
+                <span class="date">2019 &ndash; 2020</span>
+                <h3>Online Tailoring Web Application</h3>
+                <p>A full-featured web application for online tailoring services, built as a university thesis project using the Laravel PHP framework.</p>
+                <div class="tech-tags">
+                    <span class="tech-tag">Laravel</span>
+                    <span class="tech-tag">PHP</span>
+                    <span class="tech-tag">Vue.js</span>
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">Bootstrap</span>
+                    <span class="tech-tag">MySQL</span>
+                    <span class="tech-tag">Node.js</span>
+                </div>
+                <a href="https://github.com/Dula-GitHub/Online-Tailoring-Web-Application" class="btn btn-outline" target="_blank"><i class="fab fa-github"></i> View on GitHub</a>
+            </div>
+            <div class="project-card">
+                <span class="date">2018</span>
+                <h3>Student GPA Calculator</h3>
+                <p>A desktop application to calculate student semester grade point averages, built using Visual Basic and MS Access database.</p>
+                <div class="tech-tags">
+                    <span class="tech-tag">Visual Basic</span>
+                    <span class="tech-tag">MS Access</span>
+                </div>
+            </div>
+            <div class="project-card">
+                <span class="date">2017</span>
+                <h3>Music Band Website</h3>
+                <p>A responsive website designed and developed for a music band using core web technologies.</p>
+                <div class="tech-tags">
+                    <span class="tech-tag">HTML</span>
+                    <span class="tech-tag">CSS</span>
+                    <span class="tech-tag">JavaScript</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="contact-section">
+    <div class="container">
+        <h2 class="section-title">Get In Touch</h2>
+        <p class="section-subtitle">Feel free to reach out for collaborations or opportunities</p>
+        <div class="contact-grid">
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <div>
+                    <div class="label">Email</div>
+                    <a href="mailto:dulanjaleemalavige@gmail.com">dulanjaleemalavige@gmail.com</a>
+                </div>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <div>
+                    <div class="label">Phone</div>
+                    <a href="tel:+37125450934">(+371) 25450934</a>
+                </div>
+            </div>
+            <div class="contact-item">
+                <i class="fab fa-linkedin"></i>
+                <div>
+                    <div class="label">LinkedIn</div>
+                    <a href="https://www.linkedin.com/in/tharini-dulanjalee-06a7181a3/" target="_blank">tharini-dulanjalee</a>
+                </div>
+            </div>
+            <div class="contact-item">
+                <i class="fab fa-github"></i>
+                <div>
+                    <div class="label">GitHub</div>
+                    <a href="https://github.com/Dula-GitHub" target="_blank">Dula-GitHub</a>
+                </div>
+            </div>
+            <div class="contact-item">
+                <i class="fab fa-whatsapp"></i>
+                <div>
+                    <div class="label">WhatsApp</div>
+                    <a href="https://wa.me/37125450934" target="_blank">+371 25450934</a>
+                </div>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <div>
+                    <div class="label">Location</div>
+                    <span>Riga, Latvia</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <p>&copy; 2025 Tharini Dulanjalee Malavige. All rights reserved.</p>
+    </div>
+</footer>
+
+</body>
+</html>
